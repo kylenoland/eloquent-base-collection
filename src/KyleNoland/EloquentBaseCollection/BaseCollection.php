@@ -28,4 +28,17 @@ class BaseCollection extends Collection
 			$model->delete();
 		});
 	}
+
+
+	/**
+	 * Create a CSV string from the specified model attribute
+	 * 
+	 * @param string $field
+	 *
+	 * @return string
+	 */
+	public function toCsv($field = 'name')
+	{
+		return implode(',', $this->lists($field));
+	}
 }
