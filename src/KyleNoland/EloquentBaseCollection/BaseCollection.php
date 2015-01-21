@@ -32,13 +32,18 @@ class BaseCollection extends Collection
 
 	/**
 	 * Create a CSV string from the specified model attribute
-	 * 
-	 * @param string $field
 	 *
+	 * @param string $field
+	 * @param bool $minified
 	 * @return string
 	 */
-	public function toCsv($field = 'name')
+	public function toCsv($field = 'name', $minified = false)
 	{
+		if( ! $minified)
+		{
+			return implode(', ', $this->lists($field));
+		}
+
 		return implode(',', $this->lists($field));
 	}
 }
